@@ -25,13 +25,11 @@ POINTS = {
 
 def get_incomplete_lines(text):
     """Return a list of incomplete lines in the body of given text"""
-    lines = text.splitlines()
-    residuals = [strip_legal_chunks(line) for line in lines]
     return [
         line
-        for (line, residual) in zip(lines, residuals)
+        for line in text.splitlines()
         # merely incomplete lines have residuals but no closing brackets
-        if residual and not set(residual).intersection(CLOSE)
+        if not set(strip_legal_chunks(line)).intersection(CLOSE)
     ]
 
 
