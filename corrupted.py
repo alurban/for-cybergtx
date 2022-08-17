@@ -41,17 +41,15 @@ def get_corrupted_lines(text):
     ]
 
 
-def get_illegal_closes(text):
+def get_first_illegal_closes(text):
     """Return a linewise list of the first illegal close on each line"""
 
-    def first_illegal_closes(line):
+    def first_illegal_close(line):
         """Find the first illegal close on a given line"""
-        residual = list(strip_legal_chunks(line))
-        first = [i for (i, x) in enumerate(residual) if x in CLOSE][0]
-        return residual[first]
+        return [x for x in strip_legal_chunks(line) if x in CLOSE][0]
 
     # return a list of the first illegal close on each corrupted line
-    return [first_illegal_closes(line) for line in get_corrupted_lines(text)]
+    return [first_illegal_close(line) for line in get_corrupted_lines(text)]
 
 
 # -- main body ---------------------------------------------------------------
@@ -62,7 +60,7 @@ if __name__ == "__main__":
         puzzle = fobj.read()
 
     # report the score on each corrupted line
-    for (i, close) in enumerate(get_illegal_closes(puzzle)):
+    for (i, close) in enumerate(get_first_illegal_closes(puzzle)):
         print(f"line {i + 1}:\t{close}\t{POINTS[close]}")
         score += POINTS[close]
 
