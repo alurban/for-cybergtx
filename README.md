@@ -6,7 +6,7 @@ The contents are straightforward:
 
 * [`corrupted.py`](corrupted.py): Python code to efficiently find corupted lines of input and compute a total score. This is the solution to Part One.
 * [`incomplete.py`](incomplete.py): Python code to efficiently find incomplete lines of input, autocomplete them, and find the resulting middle score. This is the solution to Part Two.
-* [`puzzle_input.txt`](puzzle_input.txt): The puzzle input provided by Advent of Code.\
+* [`puzzle_input.txt`](puzzle_input.txt): The puzzle input provided by Advent of Code.
 
 **Note:** all code was developed in a Conda environment running Python 3.10, entirely using builtin Python modules.
 
